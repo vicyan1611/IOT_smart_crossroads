@@ -19,8 +19,7 @@ void carflowLoop() {
   int dis0 = calDis0();
   long long curMillis = millis();
   if (curMillis - lastMillis > 10000) { // Đếm số lượng xe trong mỗi 10s
-    Serial.print("Total cars");
-    Serial.println(countcar);
+    publishData("/iot/cars", String(countcar));
     countcar = 0;
     lastMillis = curMillis;
   }

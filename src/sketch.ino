@@ -1,10 +1,4 @@
 #include <LiquidCrystal_I2C.h>
-const int roadlightPin = 2;
-const int photoresistorPin = 0;
-const int buzzerPin = 12;
-const int buttonRed = 26;
-const int buttonGreen = 27;
-
 
 LiquidCrystal_I2C lcd(0x27, 16,2);
 
@@ -15,31 +9,14 @@ void setup() {
 
   mqttSetup();
 
-  pinMode(roadlightPin, OUTPUT);
-  pinMode(photoresistorPin, INPUT);
-
-  pinMode(buzzerPin, OUTPUT);
-
-  pinMode(buttonRed, INPUT);
-  pinMode(buttonGreen, INPUT);
+  roadSetup();
   
   carflowSetup();
 
-  dhtSetup();
+  cameraSetup();
 
-  pirSetup();
-}
+  barrierSetup();
 
-void roadlight() {
-  int value = digitalRead(photoresistorPin);
-  digitalWrite(roadlightPin, value);
-}
-
-void roadpassing() {
-  // tone(buzzerPin,432);
-  //notone(buzzerPin);
-  int br = digitalRead(buttonRed);
-  int bg = digitalRead(buttonGreen);
 }
 
 void lcddisplay() {
@@ -53,12 +30,17 @@ void lcddisplay() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  roadlight();
-  roadpassing();
+  roadLoop();
+
   lcddisplay();
+
   carflowLoop();
+
   mqttLoop();
-  dhtLoop();
-  pirLoop();
+
+  cameraLoop();
+
+  barrierLoop();
+  
   delay(10); // this speeds up the simulation
 }

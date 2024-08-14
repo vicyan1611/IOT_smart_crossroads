@@ -5,7 +5,7 @@ const char* ssid = "Wokwi-GUEST";
 const char* password = "";
 
 //***Set server***
-const char* mqttServer = "broker.hivemq.com"; 
+const char* mqttServer = "mqtt.noboroto.id.vn"; 
 int port = 1883;
 
 WiFiClient wifiClient;
@@ -34,7 +34,7 @@ void mqttConnect() {
     Serial.println("Attemping MQTT connection...");
     String clientId = "ESP32Client-";
     clientId += String(random(0xffff), HEX);
-    if(mqttClient.connect(clientId.c_str())) {
+    if(mqttClient.connect(clientId.c_str(), "ptvinh", "ptvinh")) {
       Serial.println("connected");
 
       //***Subscribe all topic you need***
