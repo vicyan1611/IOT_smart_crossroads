@@ -53,10 +53,14 @@ void callback(char* topic, byte* message, unsigned int length) {
   for(int i=0; i<length; i++) {
     strMsg += (char)message[i];
   }
-  Serial.println(strMsg);
+  //Serial.println(strMsg);
 
   //***Code here to process the received package***
-
+  String strTopic(topic);
+  if (strTopic == "/iot/lcd")
+    handleLCD(strMsg);
+  if (strTopic == "/iot/barrier")
+    handleBarrier(strMsg);
 }
 
 void publishData(String topic, String message) {

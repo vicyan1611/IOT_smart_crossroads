@@ -3,31 +3,44 @@
 
 Servo servo;
 
-int pirPin = 33;  
+const int pirPin = 33;  
 int pirState = LOW;  
-const int buzzerPin = 12;
+int isControlBarrier = 0;
+
 void barrierSetup() {
   pinMode(pirPin, INPUT);
-  servo.attach(15);
-  pinMode(buzzerPin, OUTPUT);
+  servo.attach(17);
+  servo.write(0);
 }
 
+void handleBarrier(String strStatus) {
+  int status = strStatus.toInt();
+  if (status == 1) {
+    isControlBarrier = 1;
+    digitalWrite(13, HIGH);
+  } else {
+    digitalWrite(13, LOW);
+    isControlBarrier = 0;
+  }
+}
+
+
 void barrierLoop() {
+  if (isControlBarrier == 1) return;
   int val = digitalRead(pirPin);  
   if (val == HIGH) {           
     if (pirState == LOW) {
       // we have just turned on
       servo.write(90);
-      tone(buzzerPin, 100, 5000);
-      // We only want to print on the output change, not state
+      Serial.println("motion begin");
       pirState = HIGH;
     }
     
   } else {
     if (pirState == HIGH) {
+      // we have just turned off
       servo.write(0);
-      // we have just turned of
-      // We only want to print on the output change, not state
+      Serial.println("motion end");
       pirState = LOW;
     }
   }
