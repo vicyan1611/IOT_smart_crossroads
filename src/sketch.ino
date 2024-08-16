@@ -30,6 +30,8 @@ void lcddisplay() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  barrierLoop();
+  
   roadLoop();
 
   lcddisplay();
@@ -40,7 +42,7 @@ void loop() {
 
   cameraLoop();
 
-  barrierLoop();
+  
   
   delay(10); // this speeds up the simulation
 }

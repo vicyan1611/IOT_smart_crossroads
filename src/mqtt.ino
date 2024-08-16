@@ -38,7 +38,6 @@ void mqttConnect() {
       Serial.println("connected");
 
       //***Subscribe all topic you need***
-      mqttClient.subscribe("/12345/led");
      
     }
     else {

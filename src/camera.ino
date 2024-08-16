@@ -18,5 +18,6 @@ void cameraLoop() {
     //Serial.println("Humidity: " + String(data.humidity, 1) + "%");
     //Serial.println("---");
     dhtlastMillis = currentMillis;
+    publishData("/iot/camera", String(data.temperature, 2));
   }
 }
