@@ -25,5 +25,7 @@ void loop() {
 
   cameraLoop();
 
+  roadLoop();
+
   delay(10); // this speeds up the simulation
 }
