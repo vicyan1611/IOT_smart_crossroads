@@ -17,9 +17,9 @@ void handleBarrier(String strStatus) {
   int status = strStatus.toInt();
   if (status == 1) {
     isControlBarrier = 1;
-    digitalWrite(13, HIGH);
+    servo.write(90);
   } else {
-    digitalWrite(13, LOW);
+    servo.write(0);
     isControlBarrier = 0;
   }
 }
