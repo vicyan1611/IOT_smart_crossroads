@@ -38,6 +38,8 @@ void mqttConnect() {
       Serial.println("connected");
 
       //***Subscribe all topic you need***
+      mqttClient.subscribe("/iot/lcd");
+      mqttClient.subscribe("/iot/barrier");
      
     }
     else {
