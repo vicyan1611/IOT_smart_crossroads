@@ -4,7 +4,7 @@ int dhtPin = 25;
 
 DHTesp dhtSensor;
 unsigned long long dhtlastMillis = 0;
-unsigned long long dhtinterval = 3000;
+unsigned long long dhtinterval = 10000;
 
 void cameraSetup() {  
   dhtSensor.setup(25, DHTesp::DHT22);
