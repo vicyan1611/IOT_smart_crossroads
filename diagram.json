@@ -67,7 +67,7 @@
       "id": "ultrasonic1",
       "top": 78.3,
       "left": 178.3,
-      "attrs": { "distance": "2" }
+      "attrs": { "distance": "250" }
     },
     { "type": "wokwi-dht22", "id": "dht1", "top": -95.7, "left": -706.2, "attrs": {} },
     {
